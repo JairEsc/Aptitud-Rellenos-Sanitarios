@@ -58,10 +58,10 @@ Map=Map |>
                           opacity = 0.8) |>
   addControl(html = legend_html, position = "bottomright") |> 
   addLegendNumeric(pal = colorNumeric('RdYlGn', seq(0,2.95,0.01)) , values = seq(0,2.95,0.01), position = 'bottomright', 
-                   title = 'Pertinencia', orientation = 'horizontal', shape = 'rect', decreasing = FALSE, height = 20, width = 100,labels = c("Baja","Alta") ,tickLength = 0)
+                   title = 'Pertinencia', orientation = 'horizontal', shape = 'rect', decreasing = FALSE, height = 20, width = 200,labels = c("Baja (0)","Alta (3)") ,tickLength = 0)
 
 
-Map=Map |> addPolygons(data=Municipios,color = "#7D0133",weight = 2,opacity = 1,fillOpacity = 0,label = ~paste("Municipio:",NOM_MUN))
+Map=Map |> addPolygons(data=Municipios,color = "#7D0133",weight = 2,opacity = 1,fillOpacity = 0,label = ~paste("Municipio:",NOM_MUN),group = "Municipios")
 
 
 Map=Map |> addPolygons(data=Urbans_GEO |> dplyr::select(NOMGEO,NOM_MUN,POB1,geometry),color = "#363636",fillColor = "#363636",weight = 2,opacity = 1,fillOpacity = 0.7,label = paste0(Urbans_GEO$NOM_MUN," - ",Urbans_GEO$NOMGEO),
@@ -122,7 +122,8 @@ Map=Map |>
 }, false);
     }"
   ) |> leafem::addMouseCoordinates() |> 
-  addLayersControl(overlayGroups = c("Localidades Rurales","Localidades Urbanas","Sitio de Disposición Final"),options = layersControlOptions(collapsed = F))
+  addLayersControl(overlayGroups = c("Localidades Rurales","Localidades Urbanas","Sitio de Disposición Final","Municipios"),options = layersControlOptions(collapsed = F)) |> 
+  hideGroup("Municipios")
 
 htmlwidgets::saveWidget(Map,file = "Aptitud_Rellenos_Sanitarios.html", title = "Aptitud Rellenos Sanitarios", selfcontained = TRUE,
 )
