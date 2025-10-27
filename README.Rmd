@@ -1,0 +1,62 @@
+---
+title: "Aptitud Rellenos Sanitarios"
+author: "JairES"
+date: "2025-10-27"
+output: html_document
+---
+
+## Breve Explicación de la Metodología utilizada
+
+La última actualización de este documento se realiza en Octubre de 2025, sin embargo la metodología y los insumos se mantienen con respecto a la última versión (Septiembre 2024)
+
+## Insumos
+
+Se consideran archivos GeoTIFF de los siguientes temas:
+
+-   Modelo Digital de Elevación .
+
+-   Accesibilidad Carretera a Localidades con más de 2500 habitantes.
+
+-   Uso de Suelo (Clasificación).
+
+-   Geología (Clasificación).
+
+-   Fallas y Fracturas.
+
+-   Nivel Piezométrico.
+
+-   Ríos.
+
+## Análisis Multivariado 
+
+De considerar un Análisis Jerárquico Multicriterio, se definen pesos adimensionales
+
+-   #pendiente 2.480620
+
+-   #Accesibilidad 5.465116
+
+-   #Uso de suelo 10
+
+-   #geologia 5.426357
+
+-   #fallas y fracturas 5.426357
+
+-   #nivel piezometrico 1.240310
+
+-   #rios 8.720930
+
+    Se considera la suma de los rasters posterior a la eliminación de outliers y la adimensionalización de cada uno.
+
+## Presentación de la Información
+
+El GeoTiff Resultante tiene dimensiones 998\*978, con resolución de 200 m\*202m por pixel. El valor de cada pixel (1 banda) representa la aptitud de suelo para el funcionamiento de un sitio de disposición final. A este se agregan capas de municpios, localidades urbanas y localidades rurales para complementar la información.
+
+### Actualización Octubre 2025
+
+Atendiendo a las observaciones recibidas, se consideran agregar las siguientes funcionalidades y datos adicionales.
+
+-   Funcionalidad: Pasar el cursor (mouse) sobre el mapa web te permite ver las coordenadas (En proyección EPSG:4326).
+
+-   Funcionalidad: Breve información sobre la aptitud en el punto seleccionado. Adicional a las coordenadas, se muestra un rango (intervalo) discreto para la aptitud calculada.
+
+-   Información: Aunque desactualizada, se agregan los sitios de siposición final registrados durante la administración estatal anterior (2022).
